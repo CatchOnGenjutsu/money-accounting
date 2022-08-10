@@ -1,6 +1,7 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import jQuery from "jquery";
 
 function ExpenditureModal({ hidden }) {
   const [decrementValue, setDecrementValue] = useState("");
@@ -22,6 +23,17 @@ function ExpenditureModal({ hidden }) {
       setDecrementValue("");
     }
   }
+  useEffect(() => {
+    setTimeout(function () {
+      let viewheight = window.innerHeight;
+      let viewwidth = window.innerWidth;
+      let viewport = document.querySelector("meta[name=viewport]");
+      viewport.setAttribute(
+        "content",
+        `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0"`
+      );
+    }, 200);
+  }, []);
 
   return (
     <div hidden={!hidden} className="overlay">
