@@ -1,8 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import MainPage from "./components/mainPage";
-import History from "./components/History";
-import SpendingList from "./components/SpendingList";
+import MainPage from "./components/MainPage.js";
+import History from "./components/History.js";
+import SpendingList from "./components/SpendingList.js";
 
 import {
   BrowserRouter as Router,

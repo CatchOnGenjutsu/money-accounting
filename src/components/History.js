@@ -1,11 +1,11 @@
 import React from "react";
-import NavBar from "./navbar";
+import NavBar from "./Navbar";
 
 function History() {
   return (
     <div className="main-block">
       <NavBar />
-      <div className="content-block red">
+      <div className="content-block">
         <div className="current-money"></div>
         <div className="spending-history">
           <div className="spending-element"></div>

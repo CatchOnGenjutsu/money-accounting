@@ -126,7 +126,7 @@
   background-color: rgb(214, 78, 78);
 }
 
-/* Modal window styles */
+/* Adding expenditure Modal window styles */
 
 .expenditure-modal-window {
   display: flex;
@@ -184,6 +184,24 @@
   background-color: rgba(250, 48, 48, 0.664);
   border-radius: 20px;
   box-shadow: 3px 3px 3px black;
+}
+
+/* Adding spending Modal window styles */
+
+.spending-modal-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 82vw;
+  height: 50vh;
+  position: absolute;
+  background-color: bisque;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
 /* for development */

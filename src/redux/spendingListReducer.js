@@ -1,4 +1,4 @@
-import { RENDER_SPENDING_LIST } from "./types";
+import { RENDER_SPENDING_LIST, ADD_SPENDING_LIST_ITEM } from "./types";
 import uniqid from "uniqid";
 
 const initialState = {
@@ -8,12 +8,6 @@ const initialState = {
     ["Развлечения", uniqid()],
     ["Платежи", uniqid()],
     ["Здоровье", uniqid()],
-    ["Гардероб", uniqid()],
-    ["Гардероб", uniqid()],
-    ["Гардероб", uniqid()],
-    ["Гардероб", uniqid()],
-    ["Гардероб", uniqid()],
-    ["Гардероб", uniqid()],
     ["Гардероб", uniqid()],
   ],
 };
@@ -25,6 +19,12 @@ export const spendingListReducer = (state = initialState, action) => {
       return (() => ({
         ...state,
       }))();
+    case ADD_SPENDING_LIST_ITEM:
+      return () =>
+        ({
+          ...state,
+          spendingListArr: [...state.spendingListArr, action.data.newItem],
+        }());
     default:
       return state;
   }

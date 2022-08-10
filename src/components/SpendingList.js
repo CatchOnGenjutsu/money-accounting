@@ -1,18 +1,26 @@
 import React from "react";
-import NavBar from "./navbar";
+import NavBar from "./Navbar.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useState, useRef } from "react";
+import SpendingListModal from "./SpendingListModal.js";
 
 function SpendingList() {
+  const [isHidden, setIsHidden] = useState(false);
+
   const dispatch = useDispatch();
 
   const spendingArray = useSelector((state) => {
     const { spendingListReducer } = state;
     return spendingListReducer.spendingListArr;
   });
-
+  const handleAddExpenditure = (e) => {
+    e.preventDefault();
+    setIsHidden(!isHidden);
+  };
   return (
     <div className="main-block">
       <NavBar />
+      <SpendingListModal hidden={isHidden} />
       <div className="content-block">
         <p className="spending-list-name">Статьи расхода:</p>
         <div className="spending-history-list">
@@ -24,7 +32,7 @@ function SpendingList() {
         </div>
         <div
           className="add-spending-item-button"
-          // onClick={handleAddExpenditure}
+          onClick={handleAddExpenditure}
         ></div>
       </div>
     </div>

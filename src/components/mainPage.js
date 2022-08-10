@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "./navbar";
-import ExpenditureModal from "./expenditureModal";
+import NavBar from "./Navbar.js";
+import ExpenditureModal from "./ExpenditureModal.js";
 import { useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addNewExpenditure } from "../redux/actions";
