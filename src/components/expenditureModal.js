@@ -16,7 +16,11 @@ function ExpenditureModal({ hidden }) {
   }
   function checkBlur(e) {
     e.preventDefault();
-    setDecrementValue(Number(decrementValue).toFixed(2));
+    if (e.target.value) {
+      setDecrementValue(Number(decrementValue).toFixed(2));
+    } else {
+      setDecrementValue("");
+    }
   }
 
   return (

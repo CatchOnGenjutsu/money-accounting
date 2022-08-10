@@ -14,7 +14,7 @@ function SpendingList() {
     <div className="main-block">
       <NavBar />
       <div className="content-block">
-        <p className="spending-list-text">Статьи расхода:</p>
+        <p className="spending-list-name">Статьи расхода:</p>
         <div className="spending-history-list">
           {spendingArray.map((item) => (
             <div key={item[1]} className="spending-element-list">

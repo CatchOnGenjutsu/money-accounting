@@ -24,13 +24,13 @@ function MainPage() {
       <NavBar />
       <ExpenditureModal hidden={isHidden} />
       <div className="content-block">
-        <div className="current-money">
+        <div className="current-money-block">
           <p className="currency-text">Текущий баланс:</p>
           <p className="currency-count">{count.toFixed(2)} BYN</p>
         </div>
-        <div className="spending-history">
-          <div className="spending-element"></div>
-          <div className="spending-element"></div>
+        <div className="spending-history-main">
+          <div className="spending-element-main"></div>
+          <div className="spending-element-main"></div>
         </div>
         <div className="add-spend-button" onClick={handleAddExpenditure}></div>
       </div>
