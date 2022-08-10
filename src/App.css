@@ -31,14 +31,14 @@
 }
 
 .nav-el {
-  height: 16vw;
+  height: 8vh;
 }
 
 .icons {
   box-sizing: border-box;
   width: 16vw;
-  height: 16vw;
-  padding: 48px;
+  height: 8vh;
+  padding: 1.8vh;
 }
 
 /* MainPage */
