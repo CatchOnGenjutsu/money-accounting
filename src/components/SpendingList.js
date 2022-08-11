@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useCallback } from "react";
 import NavBar from "./Navbar.js";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useRef } from "react";
 import SpendingListModal from "./SpendingListModal.js";
 
 function SpendingList() {
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHidden, setIsHidden] = useState(true);
 
   const dispatch = useDispatch();
 
@@ -17,10 +17,14 @@ function SpendingList() {
     e.preventDefault();
     setIsHidden(!isHidden);
   };
+
+  const closeModal = useCallback(() => {
+    setIsHidden(true);
+  }, []);
   return (
     <div className="main-block">
       <NavBar />
-      <SpendingListModal hidden={isHidden} />
+      <SpendingListModal hidden={isHidden} closeModal={closeModal} />
       <div className="content-block">
         <p className="spending-list-name">Статьи расхода:</p>
         <div className="spending-history-list">

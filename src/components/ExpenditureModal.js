@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import jQuery from "jquery";
 
-function ExpenditureModal({ hidden }) {
+function ExpenditureModal({ hidden, closeModal }) {
   const [decrementValue, setDecrementValue] = useState("");
 
   const spendingArray = useSelector((state) => {
@@ -23,20 +23,28 @@ function ExpenditureModal({ hidden }) {
       setDecrementValue("");
     }
   }
-  // useEffect(() => {
-  //   setTimeout(function () {
-  //     let viewheight = window.innerHeight;
-  //     let viewwidth = window.innerWidth;
-  //     let viewport = document.querySelector("meta[name=viewport]");
-  //     viewport.setAttribute(
-  //       "content",
-  //       `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0"`
-  //     );
-  //   }, 200);
-  // }, []);
+
+  useEffect(() => {
+    setTimeout(function () {
+      let viewheight = window.innerHeight;
+      let viewwidth = window.innerWidth;
+      let viewport = document.querySelector("meta[name=viewport]");
+      viewport.setAttribute(
+        "content",
+        `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0"`
+      );
+    }, 200);
+  }, []);
+
+  function overlayClick(e) {
+    e.preventDefault();
+    setDecrementValue("");
+    closeModal();
+  }
 
   return (
-    <div hidden={!hidden} className="overlay">
+    <div className="modal-general" hidden={hidden}>
+      <div className="overlay" onClick={overlayClick}></div>
       <div className="expenditure-modal-window">
         <p className="modal-text">Выберите статью расходов:</p>
         <div className="modal-list-items">

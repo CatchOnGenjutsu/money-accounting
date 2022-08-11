@@ -13,18 +13,16 @@ const initialState = {
 };
 
 export const spendingListReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case RENDER_SPENDING_LIST:
       return (() => ({
         ...state,
       }))();
     case ADD_SPENDING_LIST_ITEM:
-      return () =>
-        ({
-          ...state,
-          spendingListArr: [...state.spendingListArr, action.data.newItem],
-        }());
+      return (() => ({
+        ...state,
+        spendingListArr: [...state.spendingListArr, action.data.newItem],
+      }))();
     default:
       return state;
   }

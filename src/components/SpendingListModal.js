@@ -1,10 +1,14 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { addSpendingListItem } from "../redux/actions";
+import uniqid from "uniqid";
 import jQuery from "jquery";
 
-function SpendingListModal({ hidden }) {
+function SpendingListModal({ hidden, closeModal }) {
   const [itemOfExpenditureName, setItemOfExpenditureName] = useState("");
+
+  const dispatch = useDispatch();
 
   const spendingArray = useSelector((state) => {
     const { spendingListReducer } = state;
@@ -23,30 +27,45 @@ function SpendingListModal({ hidden }) {
       setItemOfExpenditureName("");
     }
   }
-  useEffect(() => {
-    setTimeout(function () {
-      let viewheight = window.innerHeight;
-      let viewwidth = window.innerWidth;
-      let viewport = document.querySelector("meta[name=viewport]");
-      viewport.setAttribute(
-        "content",
-        `height=${viewheight}px, width=${viewwidth}px, initial-scale=1.0"`
-      );
-    }, 200);
-  }, []);
+
+  function newItemSubmit(e) {
+    e.preventDefault();
+    if (itemOfExpenditureName) {
+      e.preventDefault();
+      dispatch(addSpendingListItem([itemOfExpenditureName, uniqid()]));
+    }
+    closeModal();
+  }
+
+  function newItemSubmitKeyDown(e) {
+    if (e.keyCode === 13) {
+      newItemSubmit(e);
+    }
+  }
+
+  function overlayClick(e) {
+    e.preventDefault();
+    setItemOfExpenditureName("");
+    closeModal();
+  }
 
   return (
-    <div hidden={!hidden} className="overlay">
+    <div className="modal-general" hidden={hidden}>
+      <div className="overlay" onClick={overlayClick}></div>
       <div className="spending-modal-window">
         <p className="modal-text">Введите новую статью расходов:</p>
         <input
+          type="text"
           value={itemOfExpenditureName}
           onChange={validationInputValue}
           onBlur={checkBlur}
+          onKeyDown={newItemSubmitKeyDown}
           placeholder="Введите название:"
           className="modal-input"
         ></input>
-        <div className="adding-expenditure-btn">ДОБАВИТЬ</div>
+        <div className="adding-expenditure-btn" onClick={newItemSubmit}>
+          ДОБАВИТЬ
+        </div>
       </div>
     </div>
   );
