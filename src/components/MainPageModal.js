@@ -59,7 +59,7 @@ function MainPageModal({ hidden, closeModal }) {
     }
   }
 
-  useEffect(() => {}, [spendingArray]);
+  // useEffect(handleOptionColorChange, [spendingArray]);
 
   useEffect(() => {
     setTimeout(function () {
@@ -89,7 +89,9 @@ function MainPageModal({ hidden, closeModal }) {
             <div
               onClick={handleSpendingName}
               key={item[1]}
-              className="modal-list-element"
+              className={
+                item[2] ? "modal-list-element colored" : "modal-list-element"
+              }
             >
               {item[0]}
             </div>

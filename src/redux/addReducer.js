@@ -4,10 +4,10 @@ import uniqid from "uniqid";
 const initialState = {
   count: 322.05,
   spendingHistoryStorage: [
-    ["Транспорт", 20.15, uniqid(), false],
-    ["Развлечения", 25.64, uniqid(), false],
-    ["Платежи", 80.12, uniqid(), false],
-    ["Гардероб", 15.75, uniqid(), false],
+    ["Транспорт", 20.15, uniqid()],
+    ["Развлечения", 25.64, uniqid()],
+    ["Платежи", 80.12, uniqid()],
+    ["Гардероб", 15.75, uniqid()],
   ],
 };
 
@@ -21,18 +21,6 @@ export const addingReducer = (state = initialState, action) => {
         spendingHistoryStorage: [
           action.data.newSpend,
           ...state.spendingHistoryStorage,
-        ],
-      }))();
-    case COLOR_NEW_EXPENDITURE_ITEM:
-      return (() => ({
-        ...state,
-        spendingHistoryStorage: [
-          ...state.spendingHistoryStorage.map((item) => {
-            if (item[2] === action.data.key) {
-              item[3] = !item[3];
-            }
-            return item;
-          }),
         ],
       }))();
     default:
