@@ -2,12 +2,13 @@ import {
   ADD_NEW_EXPENDITURE,
   RENDER_SPENDING_LIST,
   ADD_SPENDING_LIST_ITEM,
+  COLOR_NEW_EXPENDITURE_ITEM,
 } from "./types";
 
-export function addNewExpenditure(increment) {
+export function addNewExpenditure(newSpend) {
   return {
     type: ADD_NEW_EXPENDITURE,
-    data: { increment },
+    data: { newSpend },
   };
 }
 
@@ -22,5 +23,12 @@ export function addSpendingListItem(newItem) {
   return {
     type: ADD_SPENDING_LIST_ITEM,
     data: { newItem },
+  };
+}
+
+export function colorSpendingListItem(key) {
+  return {
+    type: COLOR_NEW_EXPENDITURE_ITEM,
+    data: { key },
   };
 }
