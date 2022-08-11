@@ -34,6 +34,7 @@ function SpendingListModal({ hidden, closeModal }) {
       e.preventDefault();
       dispatch(addSpendingListItem([itemOfExpenditureName, uniqid()]));
     }
+    setItemOfExpenditureName("");
     closeModal();
   }
 
