@@ -55,7 +55,9 @@ function MainPageModal({ hidden, closeModal }) {
 
   function handleOptionColorChange(e) {
     if (e.target.className === "modal-list-element") {
-      dispatch(colorSpendingListItem(e.target.key));
+      dispatch(colorSpendingListItem(e.target.innerText));
+    } else {
+      dispatch(colorSpendingListItem("drop-color"));
     }
   }
 
@@ -76,6 +78,7 @@ function MainPageModal({ hidden, closeModal }) {
   function overlayClick(e) {
     e.preventDefault();
     setDecrementValue("");
+    handleOptionColorChange(e);
     closeModal();
   }
 

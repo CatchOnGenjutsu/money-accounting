@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addSpendingListItem } from "../redux/actions";
 import uniqid from "uniqid";
-import jQuery from "jquery";
 
 function SpendingListModal({ hidden, closeModal }) {
   const [itemOfExpenditureName, setItemOfExpenditureName] = useState("");
@@ -32,7 +31,7 @@ function SpendingListModal({ hidden, closeModal }) {
     e.preventDefault();
     if (itemOfExpenditureName) {
       e.preventDefault();
-      dispatch(addSpendingListItem([itemOfExpenditureName, uniqid()]));
+      dispatch(addSpendingListItem([itemOfExpenditureName, uniqid(), false]));
     }
     setItemOfExpenditureName("");
     closeModal();

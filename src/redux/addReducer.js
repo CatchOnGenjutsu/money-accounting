@@ -1,4 +1,4 @@
-import { ADD_NEW_EXPENDITURE, COLOR_NEW_EXPENDITURE_ITEM } from "./types";
+import { ADD_NEW_EXPENDITURE } from "./types";
 import uniqid from "uniqid";
 
 const initialState = {

@@ -7,7 +7,7 @@ import uniqid from "uniqid";
 
 const initialState = {
   spendingListArr: [
-    ["Транспорт", uniqid(), true],
+    ["Транспорт", uniqid(), false],
     ["Питание", uniqid(), false],
     ["Развлечения", uniqid(), false],
     ["Платежи", uniqid(), false],
@@ -32,8 +32,12 @@ export const spendingListReducer = (state = initialState, action) => {
         ...state,
         spendingListArr: [
           ...state.spendingListArr.map((item) => {
-            if (item[1] === action.data.key) {
-              item[2] = !item[2];
+            if (item[0] === action.data.text) {
+              item[2] = true;
+            } else if (action.data.text === "drop-color") {
+              item[2] = false;
+            } else {
+              item[2] = false;
             }
             return item;
           }),

@@ -1,9 +1,8 @@
 import React from "react";
 import NavBar from "./Navbar.js";
 import MainPageModal from "./MainPageModal.js";
-import { useState, useCallback, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { addNewExpenditure } from "../redux/actions";
+import { useState, useCallback } from "react";
+import { useSelector } from "react-redux";
 
 function MainPage() {
   const [isHidden, setIsHidden] = useState(true);
@@ -17,7 +16,7 @@ function MainPage() {
     return addingReducer.spendingHistoryStorage;
   });
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const handleAddExpenditure = (e) => {
     e.preventDefault();
