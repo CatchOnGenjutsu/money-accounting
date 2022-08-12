@@ -3,6 +3,7 @@ import {
   RENDER_SPENDING_LIST,
   ADD_SPENDING_LIST_ITEM,
   COLOR_NEW_EXPENDITURE_ITEM,
+  CREATE_STATISTICS_LIST,
 } from "./types";
 
 export function addNewExpenditure(newSpend) {
@@ -30,5 +31,12 @@ export function colorSpendingListItem(id) {
   return {
     type: COLOR_NEW_EXPENDITURE_ITEM,
     data: { id },
+  };
+}
+
+export function createStatisticsList(spendingList) {
+  return {
+    type: CREATE_STATISTICS_LIST,
+    data: { spendingList },
   };
 }

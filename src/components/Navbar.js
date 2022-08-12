@@ -5,13 +5,13 @@ function NavBar() {
   return (
     <div className="nav-block">
       <Link to={"/main-page"} className="nav-el">
-        <img className="icons" src="/icons/home.svg" />
+        <img alt="home" className="icons" src="/icons/home.svg" />
       </Link>
       <Link to={"/statistics"} className="nav-el">
-        <img className="icons" src="/icons/statistics.svg" />
+        <img alt="statistics" className="icons" src="/icons/statistics.svg" />
       </Link>
       <Link to={"/spending-list"} className="nav-el">
-        <img className="icons" src="/icons/card-list.svg" />
+        <img alt="card-list" className="icons" src="/icons/card-list.svg" />
       </Link>
     </div>
   );

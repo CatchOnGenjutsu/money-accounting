@@ -1,6 +1,6 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { addSpendingListItem } from "../redux/actions";
 import uniqid from "uniqid";
 
@@ -8,11 +8,6 @@ function SpendingListModal({ hidden, closeModal }) {
   const [itemOfExpenditureName, setItemOfExpenditureName] = useState("");
 
   const dispatch = useDispatch();
-
-  const spendingArray = useSelector((state) => {
-    const { spendingListReducer } = state;
-    return spendingListReducer.spendingListArr;
-  });
 
   function validationInputValue(e) {
     e.preventDefault();
