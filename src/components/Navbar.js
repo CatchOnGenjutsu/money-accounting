@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 function NavBar() {
   return (
     <div className="nav-block">
-      <Link to={"/mainpage"} className="nav-el">
+      <Link to={"/main-page"} className="nav-el">
         <img className="icons" src="/icons/home.svg" />
       </Link>
-      <Link to={"/history"} className="nav-el">
-        <img className="icons" src="/icons/history.svg" />
+      <Link to={"/statistics"} className="nav-el">
+        <img className="icons" src="/icons/statistics.svg" />
       </Link>
       <Link to={"/spending-list"} className="nav-el">
         <img className="icons" src="/icons/card-list.svg" />

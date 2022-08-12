@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "./Navbar";
 
-function History() {
+function Statistics() {
   return (
     <div className="main-block">
       <NavBar />
@@ -26,4 +26,4 @@ function History() {
   );
 }
 
-export default History;
+export default Statistics;

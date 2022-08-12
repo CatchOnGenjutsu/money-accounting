@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import MainPage from "./components/MainPage.js";
-import History from "./components/History.js";
+import Statistics from "./components/Statistics.js";
 import SpendingList from "./components/SpendingList.js";
 
 import {
@@ -17,8 +17,8 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<MainPage />} />
-        <Route path="/mainpage" element={<MainPage />} />
-        <Route path="/history" element={<History />} />
+        <Route path="/main-page" element={<MainPage />} />
+        <Route path="/statistics" element={<Statistics />} />
         <Route path="/spending-list" element={<SpendingList />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>

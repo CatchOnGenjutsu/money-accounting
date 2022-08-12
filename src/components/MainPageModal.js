@@ -61,8 +61,6 @@ function MainPageModal({ hidden, closeModal }) {
     }
   }
 
-  // useEffect(handleOptionColorChange, [spendingArray]);
-
   useEffect(() => {
     setTimeout(function () {
       let viewheight = window.innerHeight;
