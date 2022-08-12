@@ -4,10 +4,10 @@ import uniqid from "uniqid";
 const initialState = {
   count: 322.05,
   spendingHistoryStorage: [
-    ["Транспорт", 20.15, uniqid()],
-    ["Развлечения", 25.64, uniqid()],
-    ["Платежи", 80.12, uniqid()],
-    ["Гардероб", 15.75, uniqid()],
+    ["Транспорт", 20.15, uniqid(), new Date()],
+    ["Развлечения", 25.64, uniqid(), new Date()],
+    ["Платежи", 80.12, uniqid(), new Date()],
+    ["Гардероб", 15.75, uniqid(), new Date()],
   ],
 };
 

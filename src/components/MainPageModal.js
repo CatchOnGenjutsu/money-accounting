@@ -38,9 +38,9 @@ function MainPageModal({ hidden, closeModal }) {
         spendingName,
         Number(decrementValue).toFixed(2),
         uniqid(),
+        new Date(),
       ];
       dispatch(addNewExpenditure(newSpend));
-      console.log(newSpend);
       setSpendingName("");
       setDecrementValue("");
       closeModal();

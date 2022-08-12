@@ -84,19 +84,32 @@
 .spending-element-main {
   font-size: 2vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: stretch;
   width: 100%;
   min-height: 10vh;
   background-color: rgb(255, 210, 127);
   border-radius: 15px;
   margin: 1vh 0 1vh 0;
 }
+.spend-text-content {
+  font-size: 2.4vh;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .spend-value {
   display: inline-block;
-  font-size: 2.2vh;
   color: rgb(154, 38, 248);
   padding: 0 0.7vw;
+}
+.date-time {
+  color: rgb(104, 98, 98);
+  padding: 0.7vh 0 0 1.4vw;
+  align-self: flex-start;
+  flex-grow: 0;
 }
 
 .add-spend-button {
