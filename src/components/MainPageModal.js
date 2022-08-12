@@ -55,9 +55,9 @@ function MainPageModal({ hidden, closeModal }) {
 
   function handleOptionColorChange(e) {
     if (e.target.className === "modal-list-element") {
-      dispatch(colorSpendingListItem(e.target.innerText));
+      dispatch(colorSpendingListItem(e.target.dataset.id));
     } else {
-      dispatch(colorSpendingListItem("drop-color"));
+      dispatch(colorSpendingListItem(e.target.dataset.id));
     }
   }
 
@@ -92,6 +92,7 @@ function MainPageModal({ hidden, closeModal }) {
             <div
               onClick={handleSpendingName}
               key={item[1]}
+              data-id={item[1]}
               className={
                 item[2] ? "modal-list-element colored" : "modal-list-element"
               }

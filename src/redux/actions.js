@@ -26,9 +26,9 @@ export function addSpendingListItem(newItem) {
   };
 }
 
-export function colorSpendingListItem(text) {
+export function colorSpendingListItem(id) {
   return {
     type: COLOR_NEW_EXPENDITURE_ITEM,
-    data: { text },
+    data: { id },
   };
 }

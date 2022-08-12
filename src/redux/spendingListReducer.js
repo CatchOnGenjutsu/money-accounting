@@ -32,9 +32,9 @@ export const spendingListReducer = (state = initialState, action) => {
         ...state,
         spendingListArr: [
           ...state.spendingListArr.map((item) => {
-            if (item[0] === action.data.text) {
+            if (item[1] === action.data.id) {
               item[2] = true;
-            } else if (action.data.text === "drop-color") {
+            } else if (action.data.id === "undefined") {
               item[2] = false;
             } else {
               item[2] = false;
