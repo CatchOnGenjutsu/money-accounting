@@ -43,6 +43,7 @@ function MainPageModal({ hidden, closeModal }) {
       dispatch(addNewExpenditure(newSpend));
       setSpendingName("");
       setDecrementValue("");
+      handleOptionColorChange(e);
       closeModal();
     }
   }

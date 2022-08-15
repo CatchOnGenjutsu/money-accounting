@@ -4,6 +4,7 @@ import {
   ADD_SPENDING_LIST_ITEM,
   COLOR_NEW_EXPENDITURE_ITEM,
   CREATE_STATISTICS_LIST,
+  SHOW_FILTERED_STATISTICS,
 } from "./types";
 
 export function addNewExpenditure(newSpend) {
@@ -34,9 +35,20 @@ export function colorSpendingListItem(id) {
   };
 }
 
-export function createStatisticsList(spendingHistoryList) {
+export function createStatisticsList(spendingListArray, spendingHistoryList) {
   return {
     type: CREATE_STATISTICS_LIST,
-    data: { spendingHistoryList },
+    data: { spendingListArray, spendingHistoryList },
+  };
+}
+
+export function showFilteredStatistics(
+  startDate,
+  endDate,
+  spendingHistoryList
+) {
+  return {
+    type: SHOW_FILTERED_STATISTICS,
+    data: { startDate, endDate, spendingHistoryList },
   };
 }

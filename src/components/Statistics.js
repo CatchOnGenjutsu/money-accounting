@@ -2,15 +2,39 @@ import React from "react";
 import NavBar from "./Navbar";
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createStatisticsList } from "../redux/actions";
+import { createStatisticsList, showFilteredStatistics } from "../redux/actions";
 
 function Statistics() {
   const [isHidden, setIsHidden] = useState(true);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
   const dispatch = useDispatch();
 
   // const closeModal = useCallback(() => {
   //   setIsHidden(true);
   // }, []);
+  function handleStartDate(e) {
+    e.preventDefault();
+    setStartDate(e.target.value);
+    console.log(startDate);
+  }
+
+  function handleEndDate(e) {
+    e.preventDefault();
+    setEndDate(e.target.value);
+  }
+
+  function handleSetDateClick() {
+    dispatch(
+      showFilteredStatistics(startDate, endDate, spendingHistoryStorage)
+    );
+    console.log(startDate);
+  }
+
+  const spendingListArray = useSelector((state) => {
+    const { spendingListReducer } = state;
+    return spendingListReducer.spendingListArr;
+  });
 
   const statisticsListArray = useSelector((state) => {
     const { statisticsListReducer } = state;
@@ -22,21 +46,32 @@ function Statistics() {
     return addingReducer.spendingHistoryStorage;
   });
 
-  function handleSelect(ranges) {
-    console.log(ranges); // native Date object
-  }
-
   useEffect(() => {
-    dispatch(createStatisticsList(spendingHistoryStorage));
+    dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
   }, [spendingHistoryStorage]);
 
   return (
     <div className="main-block">
       <NavBar />
       <div className="content-block">
-        <div className="statistics-inputs-container">
-          <input className="date-inputs" type="date" />
-          <input className="date-inputs" type="date" />
+        <div className="statistics-general-container">
+          <div className="statistics-inputs-container">
+            <input
+              value={startDate}
+              onChange={handleStartDate}
+              className="date-inputs"
+              type="date"
+            />
+            <input
+              value={endDate}
+              onChange={handleEndDate}
+              className="date-inputs"
+              type="date"
+            />
+          </div>
+          <div onClick={handleSetDateClick} className="set-date-btn">
+            УСТАНОВИТЬ
+          </div>
         </div>
         <div className="statistics-list-block">
           {statisticsListArray.map((item) => (
