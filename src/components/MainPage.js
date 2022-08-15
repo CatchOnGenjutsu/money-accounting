@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import NavBar from "./Navbar.js";
 import MainPageModal from "./MainPageModal.js";
 import { useState, useCallback } from "react";
@@ -15,8 +15,6 @@ function MainPage() {
     const { addingReducer } = state;
     return addingReducer.spendingHistoryStorage;
   });
-
-  // const dispatch = useDispatch();
 
   const handleAddExpenditure = (e) => {
     e.preventDefault();

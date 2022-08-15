@@ -16,9 +16,10 @@ function Statistics() {
     const { addingReducer } = state;
     return addingReducer.spendingHistoryStorage;
   });
-  // useEffect(() => {
-  //   dispatch(createStatisticsList(spendingHistoryStorage));
-  // }, [statisticsListArray]);
+
+  useEffect(() => {
+    dispatch(createStatisticsList(spendingHistoryStorage));
+  }, [spendingHistoryStorage]);
 
   return (
     <div className="main-block">

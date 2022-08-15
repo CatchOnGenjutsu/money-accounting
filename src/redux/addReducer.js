@@ -21,6 +21,7 @@ const initialState = {
     ["Транспорт", 36.15, uniqid(), new Date()],
     ["Питание", 42.64, uniqid(), new Date()],
     ["Развлечения", 47.12, uniqid(), new Date()],
+    ["Здоровье", 100.1, uniqid(), new Date()],
   ],
 };
 
@@ -28,6 +29,7 @@ export const addingReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case ADD_NEW_EXPENDITURE:
+      console.log(state.spendingHistoryStorage);
       return (() => ({
         ...state,
         count: state.count - action.data.newSpend[1],

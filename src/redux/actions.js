@@ -34,9 +34,9 @@ export function colorSpendingListItem(id) {
   };
 }
 
-export function createStatisticsList(spendingList) {
+export function createStatisticsList(spendingHistoryList) {
   return {
     type: CREATE_STATISTICS_LIST,
-    data: { spendingList },
+    data: { spendingHistoryList },
   };
 }
