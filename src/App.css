@@ -244,3 +244,61 @@
 .red {
   background-color: rgba(255, 72, 0, 0.815);
 }
+
+/* Statistics component styles */
+
+.date-inputs {
+  padding: 1vh 2vw;
+  font-size: 1.5vh;
+}
+
+.statistics-inputs-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 76vw;
+  height: 10vh;
+  background-color: aquamarine;
+  border-radius: 20px;
+}
+
+.statistics-list-block {
+  width: 76vw;
+  height: 80vh;
+  background-color: rgb(138, 255, 127);
+  border-radius: 35px;
+  overflow-y: scroll;
+  font-size: 2.9vh;
+}
+
+.statistics-element {
+  font-size: 2vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
+  width: 100%;
+  min-height: 10vh;
+  background-color: rgb(255, 210, 127);
+  border-radius: 15px;
+  margin: 1vh 0 1vh 0;
+}
+
+.statistics-text-content {
+  font-size: 2.4vh;
+  flex-grow: 1;
+  display: flex;
+  align-items: baseline;
+}
+.statistics-element-value {
+  display: inline-block;
+  color: rgb(154, 38, 248);
+  padding: 0 0.7vw;
+}
+.statistics-element-name {
+  color: rgb(104, 98, 98);
+  padding: 1vh 0 0 2vw;
+  align-self: flex-start;
+  flex-grow: 0;
+}

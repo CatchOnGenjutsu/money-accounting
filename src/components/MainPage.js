@@ -35,21 +35,25 @@ function MainPage() {
           <p className="currency-count">{count.toFixed(2)} BYN</p>
         </div>
         <div className="spending-history-main">
-          {spendingHistoryStorage.map((item) => (
-            <div key={item[2]} className="spending-element-main">
-              <div className="date-time">
-                {item[3].toLocaleDateString()}{" "}
-                {item[3].toLocaleTimeString().slice(0, -3)}
+          {spendingHistoryStorage
+            .sort((a, b) => {
+              return b[3] - a[3];
+            })
+            .map((item) => (
+              <div key={item[2]} className="spending-element-main">
+                <div className="date-time">
+                  {item[3].toLocaleDateString()}{" "}
+                  {item[3].toLocaleTimeString().slice(0, -3)}
+                </div>
+                <div className="spend-text-content">
+                  {item[0]} :{" "}
+                  <span className="spend-value">
+                    {Number(item[1]).toFixed(2)}
+                  </span>{" "}
+                  BYN
+                </div>
               </div>
-              <div className="spend-text-content">
-                {item[0]} :{" "}
-                <span className="spend-value">
-                  {Number(item[1]).toFixed(2)}
-                </span>{" "}
-                BYN
-              </div>
-            </div>
-          ))}
+            ))}
         </div>
         <div className="add-spend-button" onClick={handleAddExpenditure}></div>
       </div>
