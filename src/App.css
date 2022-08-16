@@ -349,3 +349,21 @@
   padding: 1.5vh 2vw;
   margin: 0;
 }
+
+/*Overview component styles*/
+
+.overview-main-block {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.overview-content-block {
+  background-color: rgba(0, 0, 255, 0.322);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}

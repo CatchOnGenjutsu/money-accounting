@@ -25,7 +25,7 @@ function MainPage() {
 
   const handleReplenishBalance = (e) => {
     e.preventDefault();
-    setIsHiddenBalance(!isHidden);
+    setIsHiddenBalance(!isHiddenBalance);
   };
 
   const closeModal = useCallback(() => {

@@ -2,6 +2,7 @@ import "./App.css";
 import MainPage from "./components/MainPage.js";
 import Statistics from "./components/Statistics.js";
 import SpendingList from "./components/SpendingList.js";
+import OverviewPage from "./components/OverviewPage";
 
 import {
   BrowserRouter as Router,
@@ -18,6 +19,7 @@ function App() {
         <Route path="/main-page" element={<MainPage />} />
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/spending-list" element={<SpendingList />} />
+        <Route path="/overview" element={<OverviewPage />} />
         <Route path="*" element={<Navigate replace to="/" />} />
       </Routes>
     </Router>

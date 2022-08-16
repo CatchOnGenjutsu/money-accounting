@@ -1,5 +1,6 @@
 import React from "react";
 import NavBar from "./Navbar";
+import OverviewPage from "./OverviewPage";
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { createStatisticsList, showFilteredStatistics } from "../redux/actions";
@@ -24,6 +25,15 @@ function Statistics() {
     const { addingReducer } = state;
     return addingReducer.spendingHistoryStorage;
   });
+
+  const handleOpenOverview = (e) => {
+    e.preventDefault();
+    setIsHidden(!isHidden);
+  };
+
+  const closeOverview = useCallback(() => {
+    setIsHidden(true);
+  }, []);
 
   function handleStartDate(e) {
     e.preventDefault();
@@ -63,6 +73,7 @@ function Statistics() {
   return (
     <div className="main-block">
       <NavBar />
+      {isHidden || <OverviewPage closeOverview={closeOverview} />}
       <div className="content-block">
         <div className="statistics-general-container">
           <div className="statistics-inputs-container">
@@ -85,7 +96,11 @@ function Statistics() {
         </div>
         <div className="statistics-list-block">
           {statisticsListArray.map((item) => (
-            <div key={item[0]} className="statistics-element">
+            <div
+              onClick={handleOpenOverview}
+              key={item[0]}
+              className="statistics-element"
+            >
               <div className="statistics-element-name">{item[0]}</div>
               <div className="statistics-text-content">
                 <span className="statistics-element-value">
