@@ -56,9 +56,9 @@ export function showFilteredStatistics(
   };
 }
 
-export function replenishTheBalance(increment) {
+export function replenishTheBalance(newReplenishment) {
   return {
     type: REPLENISH_THE_BALANCE,
-    data: { increment },
+    data: { newReplenishment },
   };
 }

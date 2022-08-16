@@ -42,7 +42,13 @@ export const addingReducer = (state = initialState, action) => {
     case REPLENISH_THE_BALANCE:
       return {
         ...state,
-        count: state.count + Number(action.data.increment),
+        count: state.count + Number(action.data.newReplenishment[1]),
+        spendingHistoryStorage: [
+          action.data.newReplenishment,
+          ...state.spendingHistoryStorage,
+        ].sort((a, b) => {
+          return b[3] - a[3];
+        }),
       };
     default:
       return state;

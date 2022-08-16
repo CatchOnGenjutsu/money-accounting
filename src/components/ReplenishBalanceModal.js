@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { replenishTheBalance } from "../redux/actions";
+import uniqid from "uniqid";
 
 function ReplenishBalanceModal({ hidden, closeModal }) {
   const [incrementValue, setIncrementValue] = useState(null);
@@ -23,7 +24,13 @@ function ReplenishBalanceModal({ hidden, closeModal }) {
 
   function handleAddClick(e) {
     if (incrementValue) {
-      dispatch(replenishTheBalance(Number(incrementValue)));
+      const newReplenishment = [
+        "Пополнение",
+        Number(incrementValue).toFixed(2),
+        uniqid(),
+        new Date(),
+      ];
+      dispatch(replenishTheBalance(newReplenishment));
       setIncrementValue(null);
       closeModal();
     }
