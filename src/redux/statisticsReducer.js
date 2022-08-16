@@ -1,6 +1,11 @@
-import { CREATE_STATISTICS_LIST, SHOW_FILTERED_STATISTICS } from "./types";
+import {
+  CREATE_STATISTICS_LIST,
+  SHOW_FILTERED_STATISTICS,
+  SHOW_FILTERED_OVERVIEW,
+} from "./types";
 
 const initialState = {
+  overviewTitle: "",
   statisticsListArray: [],
 };
 
@@ -21,8 +26,8 @@ export const statisticsListReducer = (state = initialState, action) => {
       }))();
     }
     case SHOW_FILTERED_STATISTICS: {
-      console.log("start " + action.data.startDate);
-      console.log("end " + action.data.endDate);
+      // console.log("start " + action.data.startDate);
+      // console.log("end " + action.data.endDate);
       let customArray = action.data.spendingListArray.map((i) => [i[0], 0]);
       action.data.spendingHistoryList.forEach((item) => {
         for (let i = 0; i < customArray.length; i++) {
@@ -39,6 +44,12 @@ export const statisticsListReducer = (state = initialState, action) => {
         ...state,
         statisticsListArray: [...customArray],
       }))();
+    }
+    case SHOW_FILTERED_OVERVIEW: {
+      return {
+        ...state,
+        overviewTitle: action.data.overviewTitle,
+      };
     }
 
     default:

@@ -3,7 +3,12 @@ import NavBar from "./Navbar";
 import OverviewPage from "./OverviewPage";
 import { useEffect, useState, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createStatisticsList, showFilteredStatistics } from "../redux/actions";
+import {
+  createStatisticsList,
+  showFilteredStatistics,
+  showFilteredOverview,
+} from "../redux/actions";
+import Title from "antd/lib/skeleton/Title";
 
 function Statistics() {
   const [isHidden, setIsHidden] = useState(true);
@@ -26,8 +31,13 @@ function Statistics() {
     return addingReducer.spendingHistoryStorage;
   });
 
+  // const overviewTitle = useSelector((state) => {
+  //   const { statisticsListReducer } = state;
+  //   return statisticsListReducer.overviewTitle;
+  // });
+
   const handleOpenOverview = (e) => {
-    e.preventDefault();
+    dispatch(showFilteredOverview(e.currentTarget.dataset.title));
     setIsHidden(!isHidden);
   };
 
@@ -100,6 +110,7 @@ function Statistics() {
               onClick={handleOpenOverview}
               key={item[0]}
               className="statistics-element"
+              data-title={item[0]}
             >
               <div className="statistics-element-name">{item[0]}</div>
               <div className="statistics-text-content">

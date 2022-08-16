@@ -7,6 +7,7 @@ import {
   CREATE_STATISTICS_LIST,
   SHOW_FILTERED_STATISTICS,
   REPLENISH_THE_BALANCE,
+  SHOW_FILTERED_OVERVIEW,
 } from "./types";
 
 export function addNewExpenditure(newSpend) {
@@ -60,5 +61,12 @@ export function replenishTheBalance(newReplenishment) {
   return {
     type: REPLENISH_THE_BALANCE,
     data: { newReplenishment },
+  };
+}
+
+export function showFilteredOverview(overviewTitle) {
+  return {
+    type: SHOW_FILTERED_OVERVIEW,
+    data: { overviewTitle },
   };
 }
