@@ -1,11 +1,13 @@
 import React, { useEffect } from "react";
 import NavBar from "./Navbar.js";
 import MainPageModal from "./MainPageModal.js";
+import ReplenishBalanceModal from "./ReplenishBalanceModal.js";
 import { useState, useCallback } from "react";
 import { useSelector } from "react-redux";
 
 function MainPage() {
   const [isHidden, setIsHidden] = useState(true);
+  const [isHiddenBalance, setIsHiddenBalance] = useState(true);
   const count = useSelector((state) => {
     const { addingReducer } = state;
     return addingReducer.count;
@@ -21,16 +23,29 @@ function MainPage() {
     setIsHidden(!isHidden);
   };
 
+  const handleReplenishBalance = (e) => {
+    e.preventDefault();
+    setIsHiddenBalance(!isHidden);
+  };
+
   const closeModal = useCallback(() => {
     setIsHidden(true);
+  }, []);
+
+  const closeModalBalance = useCallback(() => {
+    setIsHiddenBalance(true);
   }, []);
 
   return (
     <div className="main-block">
       <NavBar />
       <MainPageModal hidden={isHidden} closeModal={closeModal} />
+      <ReplenishBalanceModal
+        hidden={isHiddenBalance}
+        closeModal={closeModalBalance}
+      />
       <div className="content-block">
-        <div className="current-money-block">
+        <div className="current-money-block" onClick={handleReplenishBalance}>
           <p className="currency-text">Текущий баланс:</p>
           <p className="currency-count">{count.toFixed(2)} BYN</p>
         </div>

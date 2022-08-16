@@ -35,17 +35,6 @@ function Statistics() {
     setEndDate(e.target.value);
   }
 
-  // function setCurrentEndDate() {
-  //   let currentEndDate = new Date()
-  //     .toLocaleDateString()
-  //     .split(".")
-  //     .reverse()
-  //     .join("-");
-  //   console.log(typeof currentEndDate);
-  //   console.log(typeof startDate);
-  //   setEndDate(currentEndDate);
-  // }
-
   function handleSetDateClick() {
     if (!startDate && !endDate) {
       dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
@@ -107,7 +96,6 @@ function Statistics() {
             </div>
           ))}
         </div>
-        <div className="add-spend-button"></div>
       </div>
     </div>
   );

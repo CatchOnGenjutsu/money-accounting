@@ -1,4 +1,4 @@
-import { ADD_NEW_EXPENDITURE } from "./types";
+import { ADD_NEW_EXPENDITURE, REPLENISH_THE_BALANCE } from "./types";
 import uniqid from "uniqid";
 
 const initialState = {
@@ -29,7 +29,6 @@ export const addingReducer = (state = initialState, action) => {
   console.log(action);
   switch (action.type) {
     case ADD_NEW_EXPENDITURE:
-      console.log(state.spendingHistoryStorage);
       return (() => ({
         ...state,
         count: state.count - action.data.newSpend[1],
@@ -40,6 +39,11 @@ export const addingReducer = (state = initialState, action) => {
           return b[3] - a[3];
         }),
       }))();
+    case REPLENISH_THE_BALANCE:
+      return {
+        ...state,
+        count: state.count + Number(action.data.increment),
+      };
     default:
       return state;
   }

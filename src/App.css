@@ -323,3 +323,28 @@
   border-radius: 20px;
   box-shadow: 3px 3px 3px black;
 }
+
+/* Balance Modal window styles */
+
+.balance-modal-window {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-evenly;
+  width: 82vw;
+  height: 25vh;
+  position: absolute;
+  background-color: bisque;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+}
+
+.modal-balance-input {
+  width: 62vw;
+  font-size: 2.2vh;
+  padding: 1.5vh 2vw;
+  margin: 0;
+}

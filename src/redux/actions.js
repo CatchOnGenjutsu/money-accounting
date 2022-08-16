@@ -1,3 +1,4 @@
+import { type } from "@testing-library/user-event/dist/type";
 import {
   ADD_NEW_EXPENDITURE,
   RENDER_SPENDING_LIST,
@@ -5,6 +6,7 @@ import {
   COLOR_NEW_EXPENDITURE_ITEM,
   CREATE_STATISTICS_LIST,
   SHOW_FILTERED_STATISTICS,
+  REPLENISH_THE_BALANCE,
 } from "./types";
 
 export function addNewExpenditure(newSpend) {
@@ -51,5 +53,12 @@ export function showFilteredStatistics(
   return {
     type: SHOW_FILTERED_STATISTICS,
     data: { startDate, endDate, spendingHistoryList, spendingListArray },
+  };
+}
+
+export function replenishTheBalance(increment) {
+  return {
+    type: REPLENISH_THE_BALANCE,
+    data: { increment },
   };
 }
