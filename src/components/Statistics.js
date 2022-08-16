@@ -10,27 +10,6 @@ function Statistics() {
   const [endDate, setEndDate] = useState("");
   const dispatch = useDispatch();
 
-  // const closeModal = useCallback(() => {
-  //   setIsHidden(true);
-  // }, []);
-  function handleStartDate(e) {
-    e.preventDefault();
-    setStartDate(e.target.value);
-    console.log(startDate);
-  }
-
-  function handleEndDate(e) {
-    e.preventDefault();
-    setEndDate(e.target.value);
-  }
-
-  function handleSetDateClick() {
-    dispatch(
-      showFilteredStatistics(startDate, endDate, spendingHistoryStorage)
-    );
-    console.log(startDate);
-  }
-
   const spendingListArray = useSelector((state) => {
     const { spendingListReducer } = state;
     return spendingListReducer.spendingListArr;
@@ -45,6 +24,48 @@ function Statistics() {
     const { addingReducer } = state;
     return addingReducer.spendingHistoryStorage;
   });
+
+  function handleStartDate(e) {
+    e.preventDefault();
+    setStartDate(e.target.value);
+  }
+
+  function handleEndDate(e) {
+    e.preventDefault();
+    setEndDate(e.target.value);
+  }
+
+  // function setCurrentEndDate() {
+  //   let currentEndDate = new Date()
+  //     .toLocaleDateString()
+  //     .split(".")
+  //     .reverse()
+  //     .join("-");
+  //   console.log(typeof currentEndDate);
+  //   console.log(typeof startDate);
+  //   setEndDate(currentEndDate);
+  // }
+
+  function handleSetDateClick() {
+    if (!startDate && !endDate) {
+      dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
+    }
+    if (startDate) {
+      let currentEndDate = new Date()
+        .toLocaleDateString()
+        .split(".")
+        .reverse()
+        .join("-");
+      dispatch(
+        showFilteredStatistics(
+          startDate,
+          currentEndDate,
+          spendingHistoryStorage,
+          spendingListArray
+        )
+      );
+    }
+  }
 
   useEffect(() => {
     dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));

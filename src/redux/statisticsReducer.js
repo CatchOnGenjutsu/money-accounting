@@ -21,12 +21,14 @@ export const statisticsListReducer = (state = initialState, action) => {
       }))();
     }
     case SHOW_FILTERED_STATISTICS: {
+      console.log("start " + action.data.startDate);
+      console.log("end " + action.data.endDate);
       let customArray = action.data.spendingListArray.map((i) => [i[0], 0]);
       action.data.spendingHistoryList.map((item) => {
         for (let i = 0; i < customArray.length; i++) {
           if (
-            item[3] >= action.data.startDate &&
-            item[3] <= action.data.endDate &&
+            item[3] >= new Date(action.data.startDate) &&
+            item[3] <= new Date(action.data.endDate) &&
             item[0] === customArray[i][0]
           ) {
             return (customArray[i][1] += Number(item[1]));

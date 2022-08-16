@@ -45,10 +45,11 @@ export function createStatisticsList(spendingListArray, spendingHistoryList) {
 export function showFilteredStatistics(
   startDate,
   endDate,
-  spendingHistoryList
+  spendingHistoryList,
+  spendingListArray
 ) {
   return {
     type: SHOW_FILTERED_STATISTICS,
-    data: { startDate, endDate, spendingHistoryList },
+    data: { startDate, endDate, spendingHistoryList, spendingListArray },
   };
 }
