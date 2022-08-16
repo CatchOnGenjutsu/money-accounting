@@ -19,10 +19,10 @@ function OverviewPage({ closeOverview }) {
     <div className="overview-main-block">
       <NavBar />
       <div className="overview-content-block">
-        <p className="spending-list-name">Статьи расхода:</p>
-        <div className="spending-history-list">
+        <p className="overview-list-name">Статьи расхода:</p>
+        <div className="overview-list">
           {spendingArray.map((item) => (
-            <div key={item[1]} className="spending-element-list">
+            <div key={item[1]} className="overview-element-list">
               {item[0]}
             </div>
           ))}
