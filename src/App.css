@@ -133,7 +133,7 @@
   width: 90%;
   height: 90vh;
   background-color: rgb(138, 255, 127);
-  border-radius: 35px;
+  border-radius: 20px;
   overflow-y: scroll;
   font-size: 2.9vh;
 }
@@ -186,7 +186,7 @@
   width: 74vw;
   height: 44vh;
   background-color: #61dafb;
-  border-radius: 36px;
+  border-radius: 20px;
   overflow-y: scroll;
 }
 
@@ -198,7 +198,7 @@
   width: 74vw;
   height: 5vh;
   background-color: rgb(255, 210, 127);
-  border-radius: 36px;
+  border-radius: 20px;
   margin: 0.4vh 0;
   transition: 0.5s;
 }
@@ -289,7 +289,7 @@
   width: 76vw;
   height: 75vh;
   background-color: rgb(138, 255, 127);
-  border-radius: 35px;
+  border-radius: 20px;
   overflow-y: scroll;
   font-size: 2.9vh;
 }
