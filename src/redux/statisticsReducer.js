@@ -7,6 +7,7 @@ import {
 const initialState = {
   overviewTitle: "",
   statisticsListArray: [],
+  overviewFilteredArray: [],
 };
 
 export const statisticsListReducer = (state = initialState, action) => {
@@ -26,8 +27,6 @@ export const statisticsListReducer = (state = initialState, action) => {
       }))();
     }
     case SHOW_FILTERED_STATISTICS: {
-      // console.log("start " + action.data.startDate);
-      // console.log("end " + action.data.endDate);
       let customArray = action.data.spendingListArray.map((i) => [i[0], 0]);
       action.data.spendingHistoryList.forEach((item) => {
         for (let i = 0; i < customArray.length; i++) {
@@ -46,9 +45,27 @@ export const statisticsListReducer = (state = initialState, action) => {
       }))();
     }
     case SHOW_FILTERED_OVERVIEW: {
+      let customArray = [];
+      action.data.spendingHistoryList.forEach((item) => {
+        for (let i = 0; i < action.data.spendingHistoryList.length; i++) {
+          if (
+            action.data.startDate == new Date(0) &&
+            action.data.endDate == new Date()
+          ) {
+            return customArray.push(item);
+          }
+          if (
+            item[3] >= new Date(action.data.startDate) &&
+            item[3] <= new Date(action.data.endDate)
+          ) {
+            return customArray.push(item);
+          }
+        }
+      });
       return {
         ...state,
         overviewTitle: action.data.overviewTitle,
+        overviewFilteredArray: [...customArray],
       };
     }
 

@@ -8,7 +8,6 @@ import {
   showFilteredStatistics,
   showFilteredOverview,
 } from "../redux/actions";
-import Title from "antd/lib/skeleton/Title";
 
 function Statistics() {
   const [isHidden, setIsHidden] = useState(true);
@@ -31,20 +30,6 @@ function Statistics() {
     return addingReducer.spendingHistoryStorage;
   });
 
-  // const overviewTitle = useSelector((state) => {
-  //   const { statisticsListReducer } = state;
-  //   return statisticsListReducer.overviewTitle;
-  // });
-
-  const handleOpenOverview = (e) => {
-    dispatch(showFilteredOverview(e.currentTarget.dataset.title));
-    setIsHidden(!isHidden);
-  };
-
-  const closeOverview = useCallback(() => {
-    setIsHidden(true);
-  }, []);
-
   function handleStartDate(e) {
     e.preventDefault();
     setStartDate(e.target.value);
@@ -59,7 +44,17 @@ function Statistics() {
     if (!startDate && !endDate) {
       dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
     }
-    if (startDate) {
+    if (!startDate && endDate) {
+      dispatch(
+        showFilteredStatistics(
+          new Date(0),
+          endDate,
+          spendingHistoryStorage,
+          spendingListArray
+        )
+      );
+    }
+    if (startDate && !endDate) {
       let currentEndDate = new Date()
         .toLocaleDateString()
         .split(".")
@@ -74,7 +69,70 @@ function Statistics() {
         )
       );
     }
+    if (startDate && endDate) {
+      dispatch(
+        showFilteredStatistics(
+          startDate,
+          endDate,
+          spendingHistoryStorage,
+          spendingListArray
+        )
+      );
+    }
   }
+
+  const handleOpenOverview = (e) => {
+    if (!startDate && !endDate) {
+      dispatch(
+        showFilteredOverview(
+          new Date(0),
+          new Date(),
+          e.currentTarget.dataset.title,
+          spendingHistoryStorage
+        )
+      );
+    }
+    if (!startDate && endDate) {
+      dispatch(
+        showFilteredOverview(
+          new Date(0),
+          endDate,
+          e.currentTarget.dataset.title,
+          spendingHistoryStorage
+        )
+      );
+    }
+    if (startDate && !endDate) {
+      let currentEndDate = new Date()
+        .toLocaleDateString()
+        .split(".")
+        .reverse()
+        .join("-");
+      dispatch(
+        showFilteredOverview(
+          startDate,
+          currentEndDate,
+          e.currentTarget.dataset.title,
+          spendingHistoryStorage
+        )
+      );
+    }
+    if (startDate && endDate) {
+      dispatch(
+        showFilteredOverview(
+          startDate,
+          endDate,
+          e.currentTarget.dataset.title,
+          spendingHistoryStorage
+        )
+      );
+    }
+    setIsHidden(!isHidden);
+  };
+
+  const closeOverview = useCallback(() => {
+    setIsHidden(true);
+  }, []);
 
   useEffect(() => {
     dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));

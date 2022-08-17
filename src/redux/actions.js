@@ -64,9 +64,19 @@ export function replenishTheBalance(newReplenishment) {
   };
 }
 
-export function showFilteredOverview(overviewTitle) {
+export function showFilteredOverview(
+  startDate,
+  endDate,
+  overviewTitle,
+  spendingHistoryList
+) {
   return {
     type: SHOW_FILTERED_OVERVIEW,
-    data: { overviewTitle },
+    data: {
+      startDate,
+      endDate,
+      overviewTitle,
+      spendingHistoryList,
+    },
   };
 }

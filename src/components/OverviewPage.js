@@ -1,25 +1,18 @@
 import React, { useCallback } from "react";
 import NavBar from "./Navbar.js";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useRef } from "react";
+import { useSelector } from "react-redux";
 
 function OverviewPage({ closeOverview }) {
-  const dispatch = useDispatch();
-
   const overviewTitle = useSelector((state) => {
     const { statisticsListReducer } = state;
     return statisticsListReducer.overviewTitle;
   });
 
-  const spendingHistoryStorage = useSelector((state) => {
-    const { addingReducer } = state;
-    return addingReducer.spendingHistoryStorage;
+  const overviewFilteredArray = useSelector((state) => {
+    const { statisticsListReducer } = state;
+    return statisticsListReducer.overviewFilteredArray;
   });
 
-  const spendingArray = useSelector((state) => {
-    const { spendingListReducer } = state;
-    return spendingListReducer.spendingListArr;
-  });
   const handleCloseOverview = (e) => {
     e.preventDefault();
     closeOverview();
@@ -33,7 +26,7 @@ function OverviewPage({ closeOverview }) {
           <p className="overview-list-name">{overviewTitle}</p>
         </div>
         <div className="overview-list">
-          {spendingHistoryStorage
+          {overviewFilteredArray
             .sort((a, b) => {
               return b[3] - a[3];
             })
