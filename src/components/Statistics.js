@@ -81,6 +81,12 @@ function Statistics() {
     }
   }
 
+  function handleClearDateClick() {
+    setStartDate("");
+    setEndDate("");
+    dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
+  }
+
   const handleOpenOverview = (e) => {
     if (!startDate && !endDate) {
       dispatch(
@@ -158,8 +164,13 @@ function Statistics() {
               type="date"
             />
           </div>
-          <div onClick={handleSetDateClick} className="set-date-btn">
-            УСТАНОВИТЬ
+          <div className="statistics-date-btns">
+            <div onClick={handleSetDateClick} className="set-date-btn">
+              УСТАНОВИТЬ
+            </div>
+            <div onClick={handleClearDateClick} className="clear-date-btn">
+              СБРОС
+            </div>
           </div>
         </div>
         <div className="statistics-list-block">
