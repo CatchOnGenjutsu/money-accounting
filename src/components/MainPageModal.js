@@ -64,8 +64,8 @@ function MainPageModal({ hidden, closeModal }) {
 
   useEffect(() => {
     setTimeout(function () {
-      let viewheight = window.innerHeight;
-      let viewwidth = window.innerWidth;
+      let viewheight = window.outerHeight;
+      let viewwidth = window.outerWidth;
       let viewport = document.querySelector("meta[name=viewport]");
       viewport.setAttribute(
         "content",
