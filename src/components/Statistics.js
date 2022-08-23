@@ -11,8 +11,16 @@ import {
 
 function Statistics() {
   const [isHidden, setIsHidden] = useState(true);
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const [startDate, setStartDate] = useState(
+    new Date(new Date().setDate(1))
+      .toLocaleDateString()
+      .split(".")
+      .reverse()
+      .join("-")
+  );
+  const [endDate, setEndDate] = useState(
+    new Date().toLocaleDateString().split(".").reverse().join("-")
+  );
   const dispatch = useDispatch();
 
   const spendingListArray = useSelector((state) => {
@@ -31,13 +39,22 @@ function Statistics() {
   });
 
   function handleStartDate(e) {
+    console.log(
+      new Date(new Date().setDate(1))
+        .toLocaleDateString()
+        .split(".")
+        .reverse()
+        .join("-")
+    );
     e.preventDefault();
     setStartDate(e.target.value);
+    // handleSetDateClick();
   }
 
   function handleEndDate(e) {
     e.preventDefault();
     setEndDate(e.target.value);
+    // handleSetDateClick();
   }
 
   function handleSetDateClick() {
@@ -143,6 +160,17 @@ function Statistics() {
   useEffect(() => {
     dispatch(createStatisticsList(spendingListArray, spendingHistoryStorage));
   }, [spendingHistoryStorage]);
+
+  useEffect(() => {
+    dispatch(
+      showFilteredStatistics(
+        startDate,
+        endDate,
+        spendingHistoryStorage,
+        spendingListArray
+      )
+    );
+  }, []);
 
   return (
     <div className="main-block">
